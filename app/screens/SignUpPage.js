@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, Button, TouchableOpacity } from 'react-native';
 import { auth } from '../firebase/config'
 import { updateProfile } from "firebase/auth";
-import { useNavigation } from '@react-navigation/core'
+import { useNavigation } from '@react-navigation/core';
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 
 
 export default function SignUpPage() {
@@ -29,6 +31,9 @@ export default function SignUpPage() {
   return (
     
     <View style={styles.container}>
+      <TouchableOpacity onPress={() => navigation.replace("LoginScreen")} style={styles.backButton}>
+        <Icon name="arrow-left" size={30} />
+      </TouchableOpacity>
       <Text style={styles.title}>Sign Up</Text>
       <View style={styles.inputContainer}>
         <TextInput
@@ -76,7 +81,7 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 40,
-    borderColor: 'gray',
+    borderColor: 'grey',
     borderWidth: 1,
     marginBottom: 10,
     paddingLeft: 10,
@@ -90,5 +95,11 @@ const styles = StyleSheet.create({
   buttonText: {
     color: 'white',
     fontSize: 16,
+  },
+  backButton: {
+    padding: 10,
+    position: 'absolute',
+    top: 20, 
+    left: 10
   },
 });
